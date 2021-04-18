@@ -1,4 +1,4 @@
-# My TypeScript Starter Template
+# [draft] GitHub Trending API
 
 ```
 npm run build # build

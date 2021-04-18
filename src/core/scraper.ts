@@ -2,6 +2,8 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 import promiseRetry from 'promise-retry';
 import { Repository } from './models/Repository';
+import { TrendingParams } from './models/TrendingParams';
+import { generateUrl }  from './urls';
 
 const request = axios.create({
     timeout: 30 * 1000,
@@ -29,7 +31,11 @@ const scrapeRepository = (element: cheerio.Cheerio): Repository => {
   };
 }
 
-export const scrape = async (url: string): Promise<Repository[]> => {
+export const scrape = async (trendingParams: TrendingParams): Promise<Repository[]> => {
+  return scrapefromUrl(generateUrl(trendingParams));
+}
+
+export const scrapefromUrl = async (url: string): Promise<Repository[]> => {
 
   let scrapedRepos : Repository[] = [];
 
