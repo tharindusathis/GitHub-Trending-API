@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.generateUrl = void 0;
+const BASE_URL = `https://github.com/trending`;
+const generateUrl = (params) => {
+    let url = new URL(BASE_URL);
+    if (params.language) {
+        url.pathname = `trending/${params.language}`;
+    }
+    if (params.since) {
+        url.searchParams.append(`since`, params.since);
+    }
+    if (params.spoken_language_code) {
+        url.searchParams.append(`spoken_language_code`, params.spoken_language_code);
+    }
+    return url.href;
+};
+exports.generateUrl = generateUrl;
